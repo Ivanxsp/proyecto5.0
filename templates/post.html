@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Post{% endblock %}
+{% block content %}
+  {% for p in post %}
+    <h1>{{ p.titulo }}</h1>
+    <p>{{ p.contenido }}</p>
+    <img class="responsive-img" src="{{ p.ruta }}" alt="">
+    <br>
+    <div class="row">
+        <div class="col s6">
+          <p>Creado el: {{ p.fecha }}</p>
+        </div>
+        <div class="col s6">
+          <p>Autor: {{ p.usuario }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8">
+          <a href="{{ url_for('respuesta',id=p.id_post) }}">Responder</a>
+        </div>
+        {% if current_user.id_usuario == p.id_usuario or current_user.id_rol == 2 or current_user.id_rol == 3 %}
+        <div class="col s2">
+          <a href="{{ url_for('editar',id=p.id_post) }}">Editar</a>
+        </div>
+        <div class="col s2">
+          <button class="btn waves-effect waves-light red">
+            <a href="{{ url_for('borrar',id=p.id_post) }}" style="color: black;">Borrar</a>
+          </button>
+        </div>
+        {% endif %}
+      </div>
+    <hr>
+    <div class="row">
+      <div class="col 1">
+      </div>
+      <div class="col 2 s12">
+      {% for res in respuesta %}
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ res.contenido }}</p>
+            <br>
+            <img class="responsive-img" src="{{ res.ruta }}" alt="">
+          </div>
+          <div class="card-action">
+            <div class="row">
+              <div class="col s6">
+                <p>Creado el: {{ res.fecha }}</p>
+              </div>
+              <div class="col s6">
+                <p>Autor: {{ res.usuario }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if current_user.id_usuario == res.id_usuario or current_user.id_rol == 2 or current_user.id_rol == 3 %}
+      <div class="row">
+        <div class="col s8"></div>
+      <div class="col s2">
+        <a href="{{ url_for('editarres',id=res.id_respuesta,id2=p.id_post) }}">Editar</a>
+      </div>
+      <div class="col s2">
+        <button class="btn waves-effect waves-light red">
+          <a href="{{ url_for('borrarres',id=res.id_respuesta,id2=p.id_post) }}" style="color: black;">Borrar</a>
+        </button>
+      </div>
+    </div>
+      {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}

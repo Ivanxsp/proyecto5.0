@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+  <h1>Login de Usuario</h1>
+  <br>
+  <div class="form">
+    <form action="" method="post">
+      {{ form.hidden_tag() }}
+      <div>
+        {{ form.usuario.label }}
+        {{ form.usuario }}
+      </div>
+      <div>
+        {{ form.password.label }}
+        {{ form.password }}
+      </div>
+      <p>¿Has olvidado la contraseña? Escribe un <a href="mailto:ivanspedrosa@gmail.com">correo</a>.</p>
+      <br>
+      <div>
+        {{ form.submit(class_="btn waves-effect waves-light red") }}
+      </div>
+    </form>
+    <br>
+  </div>
+{% endblock %}

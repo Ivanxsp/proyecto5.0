@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Nuevo post{% endblock %}
+{% block content %}
+<h1>Nuevo Post</h1>
+<hr>
+<form action="" method="post" enctype="multipart/form-data">
+{{ form.hidden_tag() }}
+    <table>
+        <tr>
+            <td>{{ form.titulo.label }}</td>
+            <td>{{ form.titulo }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.contenido.label }}</td>
+            <td>{{ form.contenido }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.id_tema.label }}</td>
+            <td>{{ form.id_tema(class_="browser-default") }}</td>
+        </tr>
+    </table>
+    <p>{{ form.foto() }}  Archivos .jpg .jpeg y .png</p>
+    <p>{{ form.submit(class_="btn waves-effect waves-light red") }}</p>
+</form>
+{% endblock %}

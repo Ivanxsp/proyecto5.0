@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}ForoMotos{% endblock %}
+{% block content %}
+  <h1>ULTIMOS POST</h1>
+  <hr>
+    {% for p in post %}
+    <div class="col s12 m7">
+      <h2 class="header">{{ p.titulo }}</h2>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ p.contenido }}</p>
+          </div>
+          <div class="card-action">
+            <div class="row">
+              <div class="col s6">
+                <p>Creado el: {{ p.fecha }}</p>
+              </div>
+              <div class="col s6">
+                <p>Autor: {{ p.usuario }}</p>
+              </div>
+            </div>
+            <a href="{{ url_for('post',id=p.id_post) }}">Ver Post</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}

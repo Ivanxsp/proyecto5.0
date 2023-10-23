@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Administración{% endblock %}
+{% block content %}
+<h1>Lista de usuarios</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+    </tr>
+    {% for u in users %}
+        <tr>
+            <td>{{ u.usuario }}</td>
+            <td>{{ u.email }}</td>
+            <td>
+                <a href="{{url_for('admineditusuario',id=u.id_usuario )}}">Editar</a>
+            </td>
+            <td>
+                <button class="btn waves-effect waves-light red">
+                    <a href="{{ url_for('borraruser',id=u.id_usuario) }}" style="color: black">
+                        Borrar
+                    </a>
+                </button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

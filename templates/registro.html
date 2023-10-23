@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Registro{% endblock %}
+{% block content %}
+  <h1>Registro de Usuario</h1>
+  <br>
+  <p>La contraseña debe incluir mayúsculas, minúsculas, un número y un carácter especial (@$!%*#?&) como mínimo y tener una longitud minima de 8 caracteres y maxima de 40.</p>
+  <p>El nombre de usuario no admite espacios, estos se sustituirán por "_"</p>
+    <form action="" method="post">
+      {{ form.hidden_tag() }}    
+      <div>
+        {{ form.usuario.label }} 
+        {{ form.usuario }}
+      </div>
+      <div>
+        {{ form.email.label }} 
+        {{ form.email }} 
+      </div>
+      <div>
+        {{ form.password.label }} 
+        {{ form.password }} 
+      </div>
+      <div>
+        {{ form.password2.label }} 
+        {{ form.password2 }} 
+      </div>
+      <div>
+        {{ form.submit(class_="btn waves-effect waves-light red") }} 
+      </div>
+    </form>
+{% endblock %}

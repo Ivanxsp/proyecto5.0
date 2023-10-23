@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}404{% endblock %}
+{% block content %}
+
+    <h1>Error 404</h1>
+    <p>¡Oops! Parece que te has adentrado en un mundo desconocido.</p>
+    <p>No hay mapas aquí, pero siempre puedes volver al <a href="{{ url_for('index') }}">punto de partida</a>.</p>
+    <p>O puedes intentar encontrar otra ruta para continuar tu aventura.</p>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Respuesta{% endblock %}
+{% block content %}
+{% for p in post %}
+<h3>{{ p.titulo }}</h3>
+<p>{{ p.contenido }}</p>
+<div class="row">
+    <div class="col s6">
+      <p>Creado el: {{ p.fecha }}</p>
+    </div>
+    <div class="col s6">
+      <p>Autor: {{ p.usuario }}</p>
+    </div>
+  </div>
+{% endfor %}
+  <hr>
+  <h4>Responder aquí</h4>
+  <div class="form">
+    <form action="" method="post" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}    
+      <table>
+        <tr>
+          <td> {{ form.contenido }}</td>
+        </tr>
+      </table>
+      <p>{{ form.foto() }}  Archivos .jpg .jpeg y .png</p>
+      <p>{{ form.submit(class_="btn waves-effect waves-light red") }}</p>
+    </form>
+{% endblock %}

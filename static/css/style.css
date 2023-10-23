@@ -1,0 +1,12 @@
+.error{
+  text-align: center;
+  font-size: 2em;
+  background-color: #ffe6e6;
+  color: #cc0000;
+  margin-bottom: 10px;
+}
+img {
+  width: 350px;
+  object-fit: cover;
+  transition: all 1s;
+}

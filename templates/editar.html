@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Editar post{% endblock %}
+{% block content %}
+{% for post in post %}
+    <h1>Editar post "{{ post.titulo }}"</h1>
+    <h4>Contenido original</h4>
+    <p>{{ post.contenido }}</p>
+    <h4>Nuevo contenido</h4>
+    <form action="" method="post">
+        {{ form.contenido(value = post.contenido ) }}
+        <div class="row">
+            <div class="col s10">
+            <p>Creado el: {{ post.fecha }}</p>
+            </div>
+            <div class="col s2">
+                {{ form.submit(class_="btn waves-effect waves-light red") }}
+            </div>
+        </div>
+    </form>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Editar usuario{% endblock %}
+{% block content %}
+<h1>Bienvenido {{ current_user.usuario }}</h1>
+<hr>
+<h2>Modifica los datos de {{ user.usuario }} aquí</h2>
+<h4>El email es {{ user.email }} y el usuario {{ user.usuario }}</h4>
+<p>La contraseña debe incluir mayúsculas, minúsculas, un número y un carácter especial (@$!%*#?&) como mínimo y tener una longitud minima de 8 caracteres y maxima de 40.</p>
+<p>¡¡RECUERDA!! El nombre de usuario no admite espacios, estos se sustituirán por "_"</p>
+<div class="form">
+    <form action="" method="post">
+    {{ form.hidden_tag() }}    
+    <table>
+        <tr>
+            <td>{{ form.usuario.label }}</td>
+            <td>{{ form.usuario}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.email.label }}</td>
+            <td>{{ form.email }}</td>
+        </tr>
+        <tr>
+            <td> {{ form.password.label }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password2.label }}</td>
+            <td>{{ form.password2 }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.submit(class_="btn waves-effect waves-light red")}}</td>
+        </tr>
+    </table>
+    </form>
+</div>
+<h1>Post de {{ user.usuario }} </h1>
+<hr>
+<div>
+    {% for p in post %}
+    <div class="col s12 m7">
+        <h2 class="header">{{ p.titulo }}</h2>
+        <div class="card horizontal">
+        <div class="card-image">
+            <img src="">
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+            <p>{{ p.contenido }}</p>
+            </div>
+            <div class="card-action">
+            <div class="row">
+                <div class="col s6">
+                <p>Creado el: {{ p.fecha }}</p>
+                </div>
+                <div class="col s6">
+                <p>Autor: {{ p.usuario }}</p>
+                </div>
+            </div>
+            <a href="{{ url_for('post',id=p.id_post,autor=p.usuario) }}">Ver Post</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
